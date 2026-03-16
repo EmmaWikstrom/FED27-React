@@ -1,10 +1,27 @@
+import { NavLink } from "react-router-dom";
+import "./Navbar.css";
+
 const Navbar = () => {
     return (
         <nav>
             <ul>
-                <li>Home</li>
-                <li>Stash</li>
-                <li>Projects</li>
+                <li>
+                    <NavLink 
+                        to="/" 
+                        end
+                        className={({ isActive }) => isActive ? "active" : ""}
+                    >
+                        Home
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink 
+                        to="/contact"
+                        className={({isActive}) => (isActive ? "active" : "")}
+                    >
+                        Contact
+                    </NavLink>
+                </li>
             </ul>
         </nav>
     );

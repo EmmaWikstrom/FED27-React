@@ -1,10 +1,15 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+
 
 const Homepage = ({user}) => {
     return (
         <div>
             <h1>Greetings, {user.firstName}</h1>
-            <p></p>
+
+            <NavLink to="/contact">
+                <button>Contact Us</button>
+            </NavLink>
         </div>
     );
 };
