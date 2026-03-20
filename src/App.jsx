@@ -54,30 +54,37 @@ const App = () => {
     // </BrowserRouter>
 
     <BrowserRouter>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route index element={<Homepage/>} />
-        </Route>
-
-        {/* Nested Routes Example - go to /dashboard or /dashboard/settings or /dashboard/profile */}
-        <Route path="dashboard" element={<Dashboard />}>
-          <Route index element={<DashboardHome />} />
-          <Route path="settings" element={<Settings />} />
-          <Route path="profile" element={<Profile />} />
-        </Route>
-
-        {/* Nested Dynamic Routes Example - go to /products or /products/1 or /products/1/reviews */}
-        <Route path="products" element={<Products />}>
-          <Route index element={<ProductsList />} />
-          <Route path=":productId" element={<ProductDetail />}>
-            <Route index element={<ProductSpecs />} />
-            <Route path="reviews" element={<ProductReviews />} />
+      <CharacterProvider>
+        <Routes>
+          {/* Layout Route (no path) - wraps child routes with shared layout */}
+          <Route element={<MainLayout />}>
+            <Route index element={<Home />} />
+            <Route path="about" element={<About />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="services" element={<Services />} />
           </Route>
-        </Route>
+
+          {/* Nested Routes Example - go to /dashboard or /dashboard/settings or /dashboard/profile */}
+          <Route path="dashboard" element={<Dashboard />}>
+            <Route index element={<DashboardHome />} />
+            <Route path="settings" element={<Settings />} />
+            <Route path="profile" element={<Profile />} />
+          </Route>
+
+          {/* Nested Dynamic Routes Example - go to /products or /products/1 or /products/1/reviews */}
+          <Route path="products" element={<Products />}>
+            <Route index element={<ProductsList />} />
+            <Route path=":productId" element={<ProductDetail />}>
+              <Route index element={<ProductSpecs />} />
+              <Route path="reviews" element={<ProductReviews />} />
+            </Route>
+          </Route>
 
           <Route path="/useRef" element={<RefExample />} />
 
-      </Routes>
+          <Route path="/multistep" element={<MultiStepForm />} />
+        </Routes>
+      </CharacterProvider>
     </BrowserRouter>
   );
 };
